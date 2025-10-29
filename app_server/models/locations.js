@@ -42,8 +42,8 @@ const locationSchema = new mongoose.Schema({
   },
   facilities: [String],
   coords: {
-    type: { type: String},
-    index: [Number]
+    type: { type: String },
+    coordinates: [Number]
   },
   openingTimes: [openingTimesSchema],
   reviews: [reviewSchema]
@@ -51,4 +51,5 @@ const locationSchema = new mongoose.Schema({
 
 locationSchema.index({coords: '2dsphere'});
 
-mongoose.model('Location', locationSchema);
+// creates collection 'locations' if not exist
+mongoose.model('Location', locationSchema); 
