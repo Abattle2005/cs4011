@@ -1,12 +1,13 @@
 import { Pipe, PipeTransform } from '@angular/core';
 
 @Pipe({
-  name: 'distance'
+  name: 'distance',
+  standalone: true
 })
 export class DistancePipe implements PipeTransform {
 
   transform(distance: number): string {
-    const isNumeric = function (n: any) {
+    const isNumeric = function (n) {
       return !isNaN(parseFloat(n)) && isFinite(n);
     };
 
@@ -26,4 +27,3 @@ export class DistancePipe implements PipeTransform {
   }
 
 }
-

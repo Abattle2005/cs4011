@@ -13,7 +13,6 @@ const locationsListByDistance = async (req, res) => {
     key: 'coords',
     spherical: true,
     maxDistance: 20000,
-    limit: 10
   };
   if ((!lng && lng !== 0) || (!lat && lat !== 0)) {
     return res
@@ -28,7 +27,8 @@ const locationsListByDistance = async (req, res) => {
           near,
           ...geoOptions
         }
-      }
+      },
+      { $limit: 10 }
     ]);
     const locations = results.map(result => {
       return {
