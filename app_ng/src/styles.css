@@ -10,6 +10,14 @@ legend {
   font-family: 'Lobster', cursive;
 }
 
+.main-block {
+  margin-top: 100px;
+}
+
+.footer {
+  margin-top: 20px;
+}
+
 .navbar {
   background-color: #ad1d28;
   border-color: #911821;
