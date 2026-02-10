@@ -17,24 +17,23 @@ app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
+
 app.use(express.static(path.join(__dirname, 'public')));
-app.use(express.static(path.join(__dirname, 'app_ng', 'build')));
+app.use(express.static(path.join(__dirname, 'app_ng', 'dist', 'app_ng', 'browser')));
 
 app.use('/api', (req, res, next) => {
-  const allowedOrigins = ['http://localhost:4200', 'http://localhost:4300'];
-  const origin = req.headers.origin;
-  if (allowedOrigins.includes(origin)) {
-    res.header('Access-Control-Allow-Origin', origin);
-  }
+  res.header('Access-Control-Allow-Origin', 'http://localhost:4200');
   res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
   next();
 });
 
 app.use('/api', apiRouter);
-app.get(/(\/about)|(\/location\/[a-z0-9]{24})/, function(req, res) {
-  res.sendFile(path.join(__dirname, 'app_public', 'build', 'index.html'));
-});
 
+app.get('*', (req, res) => {
+  res.sendFile(
+    path.join(__dirname, 'app_ng', 'dist', 'app_ng', 'browser', 'index.html')
+  );
+});
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
