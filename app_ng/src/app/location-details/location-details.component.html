@@ -15,7 +15,7 @@
     <div class="card card-primary">
       <div class="card-block">
         <h2 class="card-title">Facilities</h2>
-        <span *ngFor="let facility of location.facilities" class="badge badge-warning">
+        <span *ngFor="let facility of location.facilities" class="badge bg-warning">
           <i class="fa fa-check"></i>
           {{facility}}
         </span>
@@ -79,8 +79,8 @@
         </div>
         <div *ngFor="let review of location.reviews | mostRecentFirst" class="row review">
           <div class="col-12 no-gutters review-header">
-            <app-rating-stars [rating]="review.rating"></app-rating-stars>
-            <span class="reviewAuthor">{{ review.author }}</span>
+            <app-rating-stars [rating]="review.rating"></app-rating-stars>&nbsp;
+            <span class="reviewAuthor">{{ review.author }}</span>&nbsp;
             <small class="reviewTimestamp">{{ review.createdOn | date : 'd MMMM yyyy'}}</small>
           </div>
           <div class="col-12">

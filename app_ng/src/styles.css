@@ -119,3 +119,11 @@ body {
 .bg-warning {
   color: black;
 }
+
+.card-title {
+  color: #104a53;
+}
+
+h4 {
+  color: lemonchiffon;
+}
