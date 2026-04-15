@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 const ctrlLocations = require('../controllers/locations');
 const ctrlReviews = require('../controllers/reviews');
+const ctrlParking = require('../controllers/parking');
 
 // locations
 router
@@ -26,4 +27,12 @@ router
   .put(ctrlReviews.reviewsUpdateOne)
   .delete(ctrlReviews.reviewsDeleteOne);
 
+router
+  .route('/parking')
+  .get(ctrlParking.parkingList)
+  .post(ctrlParking.parkingCreate);
+
+  router.get('/test', (req, res) => {
+  res.json({ status: "API WORKING" });
+});
 module.exports = router;
